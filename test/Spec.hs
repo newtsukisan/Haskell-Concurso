@@ -1,9 +1,11 @@
 {-Con esta configuaracion es relativamente facil escribir una secuencia de test.-}
 import Test.Framework (defaultMain, testGroup)
 import Test.Framework.Providers.QuickCheck2 (testProperty)
+import Data.List
 
 import Test.QuickCheck
 import Countdown
+import Propio
 
 main :: IO ()
 main = defaultMain tests
@@ -17,10 +19,12 @@ tests = [
         ]
 
 prop1 (SmallIntList xs) = choices xs == (concat $ map perms $ subs xs) 
-  
 
 prop2 i = i == i + 0
-  where types = (i :: Int) 
+  where types = (i :: Int)  
+
+-- prop2 xs  = remove elemento xs == 
+--  where elemento  
 
 -- choices to be tested
 -- one posible implementation is choices = concat . perms $ map subs

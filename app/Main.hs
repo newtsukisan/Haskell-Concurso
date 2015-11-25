@@ -1,6 +1,7 @@
 module Main where
 
 import Propio              -- Solución propia
+import Countdown           -- Course solution
 import Lib                 -- Solucion desarrollada en el libro
 import System.Environment  -- Para manejarnos con la entrada-salida
    
@@ -11,8 +12,9 @@ import System.Environment  -- Para manejarnos con la entrada-salida
 
 ejecutar       :: [String] -> String
 ejecutar (x0:x1:x2:[])
-   | x2 == "1" = sub_ejecuta solucion  x0 x1    -- Solucion propia
-   | x2 == "2" = sub_ejecuta solutions x0 x1    -- Solucion del libro no mejorada
+   | x2 == "1" = sub_ejecuta solucion     x0 x1    -- Solucion propia
+   | x2 == "2" = sub_ejecuta solutions'   x0 x1    -- Solucion del libro no mejorada
+   | x2 == "3" = sub_ejecuta solutions''  x0 x1    -- Solucion del libro si mejorada
    | otherwise = "No se ha seleccionado uno de los dos  métodos disponibles"
       where 
          sub_ejecuta f arg0 arg1 = show $ f (getEstado (arg0))   (getObjetivo (arg1))

@@ -2,7 +2,9 @@ Countdown example from chapter 11 of Programming in Haskell,
 Graham Hutton, Cambridge University Press, 2007.
 
 > module Countdown
->  (subs, perms, choices
+>  (subs, perms, choices    
+>  , solutions' 
+>  , solutions'' 
 >  ) where
 > import System.CPUTime
 > import Numeric
@@ -59,7 +61,7 @@ solo elemento, pues se queda igual. Luego una forma de implementarlo sería las 
 concat map perms subs
 
 > choices                       :: [a] -> [[a]]
-> choices     xs                =  concat $ map perms $ subs xs
+> choices     xs                =  [zs | ys <- subs xs, zs <- perms ys]
 
 Formalising the problem
 -----------------------
@@ -71,7 +73,9 @@ Brute force solution
 --------------------
 
 > split                         :: [a] -> [([a],[a])]
-> split                         =  undefined
+> split  []                     =  []
+> split  [_]                    =  []
+> split (x :xs)                 = ([x],xs): [(x:ls,rs) | (ls,rs) <- split xs]
 > 
 > exprs                         :: [Int] -> [Expr]
 > exprs []                      =  []

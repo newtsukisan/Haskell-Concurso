@@ -1,7 +1,8 @@
-module Propio
-   (solucion
-   ) where 
 
+module Propio
+   (solucion, removeone
+   ) where 
+import Data.List
 {-Desarrollo propio para encontrar solucion al problema del concurso-}
 
 -- Funcion para combinar un elemento con todos los elementos de una lista formando parejas
@@ -142,4 +143,19 @@ solucion :: Estado -> Int -> Caminos
 solucion estado solucion = 
    map reverse $ solucionar [[(Operacion "suma" 0 0,estado)]] solucion [[]] (length estado) 
 
+-- Testing for some others implementations
+-- Eliminar un elemento de una lista
+ 
+removeone :: Eq a => a -> [a] -> [a]
+removeone x []     = []
+removeone x (y:ys) 
+  | x ==  y    = ys                 -- ready, it was the first element
+  | otherwise  = y : removeone x ys -- carry on, until find or not
+-- Check if all elements of a list are in the other list
+isChoice :: Eq a => [a] -> [a] -> Bool
+isChoice [] _      = True           -- caso base
+isChoice (x:xs) [] = False
+isChoice (x:xs) ys = elem x ys && isChoice xs (removeone x ys)
+
+-- split :: [a] -> [([a],[a])]
 
