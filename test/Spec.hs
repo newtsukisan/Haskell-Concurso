@@ -11,29 +11,52 @@ main :: IO ()
 main = defaultMain tests
 
 tests = [
-        testGroup "Probando la funcionalidad basica de choices" 
+        testGroup "Testing implementations for exercises" 
               [
-                testProperty "Definicion basica" prop1
-              , testProperty "ver si funciona" prop2
+                testProperty "Using known definition"           prop1
+              , testProperty "Simple Checking"                  prop2
+              , testProperty "isChoice must be true - 1"        prop3
+              , testProperty "isChoice must be true - 2"        prop4
+              , testProperty "removing known element 1"         prop5
+              , testProperty "removing known element 2"         prop6
               ]
         ]
-
+-- Comparing with one possible implemetation
 prop1 (SmallIntList xs) = choices xs == (concat $ map perms $ subs xs) 
-
+-- Checking trivial for security
 prop2 i = i == i + 0
   where types = (i :: Int)  
+-- isChoice true cases 
+prop3 xs             = 
+   not (null xs) ==>   -- not empty lists
+    classify (length xs < 2) "trivial" $  isChoice (tail xs) xs  -- must be true
+    where types = (xs::[Int])
+prop4 xs             = 
+   not (null xs) ==>   -- not empty lists
+    classify (length xs < 2) "trivial" $  isChoice [(head xs)] xs -- must be true                            
+    where types = (xs::[Int])
 
--- prop2 xs  = remove elemento xs == 
---  where elemento  
+prop5 xs             = 
+   not (null xs) ==>   -- not empty lists
+    classify (length xs < 2) "trivial" $  isChoice (removeone elemento xs) xs-- must be inside                            
+    where types    = (xs::[Int])
+          elemento = last (sort xs)
+
+prop6 xs             = 
+   not (null xs) ==>   -- not empty lists
+    classify (length xs < 2) "trivial" $  size_after + 1  == size_before  -- must be inside                            
+    where types       = (xs::[Int])
+          elemento    = head (sort xs)                 -- after sorting take anyone
+          size_after  = length (removeone elemento xs)
+          size_before = length xs
 
 -- choices to be tested
--- one posible implementation is choices = concat . perms $ map subs
-
+-- only certain size for list of integer when testing choices to avoid big time calcutations
 newtype SmallIntList = SmallIntList [Int] deriving (Eq,Show)
 
 instance Arbitrary SmallIntList where
   arbitrary = sized $ \s -> do
-                 n <- choose (0,s `min` 9)
+                 n <- choose (0,s `min` 7)
                  xs <- vectorOf n (choose (-10000,10000))
                  return (SmallIntList xs)
   shrink (SmallIntList xs) = map SmallIntList (shrink xs) 

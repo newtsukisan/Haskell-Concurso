@@ -19,7 +19,7 @@ ejecutar (x0:x1:x2:[])
       where 
          sub_ejecuta f arg0 arg1 = show $ f (getEstado (arg0))   (getObjetivo (arg1))
          getEstado     :: String -> [Int]       -- Para obtener el estado inicial
-         getEstado str = read str :: [Int]      -- lo convertimos en una cadena de enteros
+         getEstado str = read str :: [Int]      -- Lo convertimos en una lista de enteros
          getObjetivo     :: String -> Int       -- Para obtener el posible objetivo
          getObjetivo str = read str :: Int      -- Lo pasamos a un entero
 
