@@ -8,23 +8,24 @@ combinar :: a -> [a] -> [[a]]
 combinar e [x] = [[e,x]]                               --  Caso base
 combinar e (x:xs) = [e,x] : combinar e xs              -- Natural recursion 
 
-parejas :: [a] -> [[a]]
+parejas :: [a] -> [[a]]                                -- Definicion de la funcion
 parejas (x:y:[]) = [[x,y]]                             -- Caso Base
 parejas (x:xs) = (combinar x xs) ++ parejas xs         -- Natural recursion
-
-pares :: [a] -> [[a]]
-pares (x:[])   = [[x]]
+-- Funcion para formar todos los posibles pares de una lista
+pares :: [a] -> [[a]]                                  -- Definicion de la funcion
+pares (x:[])   = [[x]]                                 -- Caso base cuando queda solo uno
 pares (x:y:[]) = [[x,y]]                               -- Caso base cuando quedan solo dos.
 pares (x:xs)   = [[x,y] | y <- xs] ++ pares xs         -- Natural recursion 
 
 {-Para realizar las operaciones-}
-type Operador = String 
-operadores :: [Operador]
-operadores  = ["suma", "resta", "mult", "div"] 
+type Operador = String                           -- Utilizamos Strings para almacenar operadores
+data Operacion = Operacion  String Int Int  deriving (Show)
+type Estado = [Int]                              -- Consideramos un estado como una lista de enteros
+type Paso   = (Operacion, Estado)                -- Un paso es una dupla de una operacion y un Estado 
+operadores :: [Operador]                         -- Los operadores son una lista de operadores
+operadores  = ["suma", "resta", "mult", "div"]   -- Las operaciones que podemos hacer
 
 {-[1,4,6,7] -> Parejas [[1,4],[1,6],[1,7]...]  -> tuplas operacion -} 
-
-data Operacion = Operacion  String Int Int  deriving (Show)
 
 operar :: Operacion -> Int                                                  
 operar (Operacion op x y) 
@@ -33,17 +34,19 @@ operar (Operacion op x y)
    | op == "mult"  = x * y
    | op == "div"   = x `div` y
 
-{-Necesitamos una funcion que nos diga si las operaciones son validas-}
+{-Necesitamos una funcion que nos diga si las operaciones son validas.
+Utilizando rem en lugar de mod ganamos en el rendimiento de tiempo-}
 isValid :: Operacion -> Bool
 isValid (Operacion op x y)
-   | op == "suma"  = True           -- Siempre se pueden sumar
-   | op == "resta" = x > y          -- Solo cuando nos da un positivo
-   | op == "mult"  = cMult x y      -- Solo cuando se pueden multiplicar
-   | op == "div"   = cDiv  x y      -- Solo si son divisibles 
+   | op == "suma"  = x <= y                -- Propiedad asociativa
+   | op == "resta" = x > y                 -- Solo cuando nos da un positivo
+   | op == "mult"  = cMult x y             -- Solo cuando se pueden multiplicar
+   | op == "div"   = cDiv  x y             -- Solo cuando permitimos que se puedan dividir 
      where
        cMult x y
          | (x == 1) || (y == 1) = False    -- No nos interesa multiplicar por 1
          | (x == 0) || (y == 0) = False    -- No nos interesa multiplicar por 0
+         | x <=  y              = False    -- Propiedad conmutativa
          | otherwise            = True     -- En otro caso multiplicamos.
        cDiv x y
          |  x `rem` y /= 0      = False    -- Solo queremos los divisibles
@@ -52,18 +55,17 @@ isValid (Operacion op x y)
          | otherwise            = True     -- Si no se cumple lo anterior podemos dividir
 
 {-Ahora necesitamos una funcion que de una lista de pares nos de todas las combinacines posibles con los 
-operadoes -} 
-getOperaciones pares oprs = [sal |
-                             op    <- oprs,
-                             [x,y] <- pares, 
-                             let sal = Operacion op  x y,
-                             isValid sal]
+operadores -} 
+getOperaciones pares oprs = [sal |                        -- Lista con todos las operaciones
+                             op    <- oprs,               -- Obtenemos los posibles operadores
+                             [x,y] <- pares,              -- Obtenemos los posibles pares
+                             let sal = Operacion op  x y, -- Salida es las nuevas operaciones
+                             isValid sal]                 -- Solo dejamos las operaciones validas
 
 {-Recibe un estado inicial y una par y devuelve el estado sin ese par y un valor añadido de la 
 actualizar la operacion
 [1,2,3,4] Operacion "suma" 2 3 -> [1,5,4]-}  
-type Estado = [Int]
-type Paso   = (Operacion, Estado)
+
 -- Ejemplo de uso getEstados [1,5,7,8] (Operacion "suma" 1 5)  = [6,7,8]
 getEstados :: Estado -> Operacion -> Estado
 getEstados xs  o@(Operacion op  x y) = (operar o) : filter (noestan) xs  
@@ -86,7 +88,7 @@ Paso inicial    ->  (Operacion "suma" 0 0,[3,3])
 2. Con ese estado a traves de avanzar obtenemos una lista de-}
 
 -- solucionar :: [Paso] ->
---getEstadodelPaso (Operacion "suma" 1 2,[3,3])
+-- getEstadodelPaso (Operacion "suma" 1 2,[3,3])
 
 getEstadodelPaso :: Paso -> Estado
 getEstadodelPaso (_,estado) = estado
@@ -98,9 +100,7 @@ nextGeneration estado = avanzar $ getEstadodelPaso estado
 isSolution :: Int -> Estado -> Bool
 isSolution  solucion estado= elem solucion estado
 
--- haySolucion 11 [[1..5],[4..7],[4..11]]  == True
--- haySolucion 11 [[1..5],[4..7],[4..10]]  == False
--- haySolucion 12 [[]]                     == False
+
 haySolucion :: Int -> Paso  -> Bool
 haySolucion solucion paso =  isSolution solucion (getEstadodelPaso paso)
 
@@ -133,7 +133,10 @@ solucionar caminos solucion soluciones n
               let ultimo = head camino,               -- Extraemos la ultima solucion
               haySolucion solucion ultimo]            -- Vemos si es una solucion
       
-
+-- Funcion para obtener la solucion al problema del concurso.
+-- Estado inicial
+-- Valor deseado
+-- Salida con la lista de caminos (sucesion de pasos) que dan la solucion
 solucion :: Estado -> Int -> Caminos
 solucion estado solucion = 
    map reverse $ solucionar [[(Operacion "suma" 0 0,estado)]] solucion [[]] (length estado) 
