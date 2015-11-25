@@ -12,10 +12,21 @@ data Op = Add | Sub | Mul | Div deriving (Show)
 -- Definimos que operaciones son validas
 
 valid :: Op -> Int -> Int -> Bool
-valid Add _ _ = True              -- Siempre podremos sumar varios numeros enteros
+valid Add x y = x <= y            -- Siempre podremos sumar varios numeros enteros
 valid Sub x y = x > y             -- Para no tener numeros negativos.
-valid Mul _ _ = True              -- Siempre podremos multiplicar dos enteros
-valid Div x y = x `mod` y == 0    -- Solo si es un numero divisible del segundo
+valid Mul x y = cMult x y         -- Siempre podremos multiplicar dos enteros
+valid Div x y = cDiv x y          -- Solo si es un numero divisible del segundo
+cMult x y
+         | (x == 1) || (y == 1) = False    -- No nos interesa multiplicar por 1
+         | (x == 0) || (y == 0) = False    -- No nos interesa multiplicar por 0
+         | x <=  y              = False    -- Propiedad conmutativa
+         | otherwise            = True     -- En otro caso multiplicamos.
+cDiv x y
+         |  x `rem` y /= 0      = False    -- Solo queremos los divisibles
+         | (y == 1)             = False    -- No nos interesa dividir por 1
+         | (y == 0)             = False    -- No nos interesa dividir por 0  
+         | otherwise            = True     -- Si no se cumple lo anterior podemos dividir 
+
 
 {-Una funcion para aplicar las operaciones-}
 apply :: Op -> Int -> Int -> Int
