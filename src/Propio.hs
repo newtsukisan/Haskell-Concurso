@@ -1,5 +1,6 @@
 module Propio
-  where 
+   (solucion
+   ) where 
 
 {-Desarrollo propio para encontrar solucion al problema del concurso-}
 
@@ -51,7 +52,7 @@ isValid (Operacion op x y)
        cDiv x y
          |  x `rem` y /= 0      = False    -- Solo queremos los divisibles
          | (y == 1)             = False    -- No nos interesa dividir por 1
-         | (y == 0) = False                -- No nos interesa dividir por 0  
+         | (y == 0)             = False    -- No nos interesa dividir por 0  
          | otherwise            = True     -- Si no se cumple lo anterior podemos dividir
 
 {-Ahora necesitamos una funcion que de una lista de pares nos de todas las combinacines posibles con los 

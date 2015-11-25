@@ -1,18 +1,18 @@
 
 ==================== FINAL INTERFACE ====================
-2015-11-01 13:28:50.272956 UTC
+2015-11-25 10:19:40.02239 UTC
 
 interface concu_9AEwiLQ4KB34fA4pkFzeil:Lib 7102
-  interface hash: 73dd688c93e66ad06f13aca77203ea7e
-  ABI hash: d7fb1c30ab2f8c175a42338a9739d363
-  export-list hash: 98f957f68ca5ef206efc245d6ae07d25
+  interface hash: 06fdf99690e77b43ff5fe003fb0916d9
+  ABI hash: 95e3e74fb3a86bd00832f71708430573
+  export-list hash: b1b32a2ae380726f8b0553c7e5ac5f5b
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 56b9a755d22be00f2eba50f3628a69c7
   sig of: Nothing
   used TH splices: False
   where
 exports:
-  Lib.someFunc
+  Lib.solutions
 module dependencies:
 package dependencies: base-4.8.1.0* ghc-prim-0.4.0.0
                       integer-gmp-1.0.0.0
@@ -20,28 +20,332 @@ orphans: base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
 family instance modules: base-4.8.1.0:Control.Applicative
                          base-4.8.1.0:Data.Either base-4.8.1.0:Data.Monoid
                          base-4.8.1.0:Data.Type.Equality base-4.8.1.0:GHC.Generics
+import  -/  base-4.8.1.0:Data.Foldable 2e5acb797cfda6b3b7fabd7052abe290
+import  -/  base-4.8.1.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.1.0:GHC.Num 9f42750c866f5832ca565146bd660c60
+import  -/  base-4.8.1.0:GHC.Real 4c3b525ecbd4d62bb287aec36d4c2f0d
+import  -/  base-4.8.1.0:GHC.Show b8c65ca3124f92a166c9f05120382442
 import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
 import  -/  base-4.8.1.0:System.IO 29a6f3d7c8ad8a4e6200d8bbb6e70aae
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
 import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
-04f31e7a961cce2aca6145cc1d256087
-  someFunc :: GHC.Types.IO ()
-  {- Arity: 1, Strictness: <L,U>,
-     Unfolding: InlineRule (0, True, True)
-                Lib.someFunc1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
-3cf1fc8055ad5883809eb6c712dafc26
-  someFunc1 ::
-    GHC.Prim.State# GHC.Prim.RealWorld
-    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Strictness: <L,U>,
-     Unfolding: (\ eta :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
-                 GHC.IO.Handle.Text.hPutStr2
-                   GHC.IO.Handle.FD.stdout
-                   Lib.someFunc2
-                   GHC.Types.True
-                   eta) -}
-b13843fcce024dcde74563249ad094df
-  someFunc2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "someFunc"#) -}
+33ff6ecfa69072dde4824213080e0b83
+  $fShowExpr :: GHC.Show.Show Lib.Expr
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Lib.Expr
+                  Lib.$fShowExpr_$cshowsPrec
+                  Lib.$fShowExpr_$cshow
+                  Lib.$fShowExpr_$cshowList -}
+33ff6ecfa69072dde4824213080e0b83
+  $fShowExpr1 :: Lib.Expr -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (\ w :: Lib.Expr w1 :: GHC.Base.String ->
+                 Lib.$w$cshowsPrec 0 w w1) -}
+33ff6ecfa69072dde4824213080e0b83
+  $fShowExpr_$cshow :: Lib.Expr -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x :: Lib.Expr ->
+                 Lib.$fShowExpr_$cshowsPrec
+                   GHC.Show.shows18
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+33ff6ecfa69072dde4824213080e0b83
+  $fShowExpr_$cshowList :: [Lib.Expr] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__ @ Lib.Expr Lib.$fShowExpr1) -}
+33ff6ecfa69072dde4824213080e0b83
+  $fShowExpr_$cshowsPrec ::
+    GHC.Types.Int -> Lib.Expr -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <S,1*U(U)><S,1*U><L,U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ w :: GHC.Types.Int w1 :: Lib.Expr w2 :: GHC.Base.String ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 Lib.$w$cshowsPrec ww1 w1 w2 }) -}
+311ccde704fbfb2baa8f0bbff82a30fc
+  $fShowOp :: GHC.Show.Show Lib.Op
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Lib.Op
+                  Lib.$fShowOp_$cshowsPrec
+                  Lib.$fShowOp_$cshow
+                  Lib.$fShowOp_$cshowList -}
+287853e0c9193eaa9a9aec04bd0c0e1a
+  $fShowOp1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Div"#) -}
+b20f172e7464f4a3436b5f2b973d100d
+  $fShowOp2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Mul"#) -}
+8d00e6eae346cf24df5fea754e1d01a6
+  $fShowOp3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Sub"#) -}
+878bf17b36abfeb6b96b435fd4b7c8bd
+  $fShowOp4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Add"#) -}
+311ccde704fbfb2baa8f0bbff82a30fc
+  $fShowOp_$cshow :: Lib.Op -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x :: Lib.Op ->
+                 Lib.$fShowOp_$cshowsPrec
+                   GHC.Show.shows18
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+311ccde704fbfb2baa8f0bbff82a30fc
+  $fShowOp_$cshowList :: [Lib.Op] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__ @ Lib.Op Lib.$w$cshowsPrec1) -}
+311ccde704fbfb2baa8f0bbff82a30fc
+  $fShowOp_$cshowsPrec :: GHC.Types.Int -> Lib.Op -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ w :: GHC.Types.Int w1 :: Lib.Op w2 :: GHC.Base.String ->
+                 Lib.$w$cshowsPrec1 w1 w2) -}
+46232a6f3cc42d20daff522fc9d6cf85
+  $fShowShape :: GHC.Show.Show Lib.Shape
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Lib.Shape
+                  Lib.$fShowShape_$cshowsPrec
+                  Lib.$fShowShape_$cshow
+                  Lib.$fShowShape_$cshowList -}
+46232a6f3cc42d20daff522fc9d6cf85
+  $fShowShape1 :: Lib.Shape -> GHC.Show.ShowS
+  {- Arity: 1,
+     Unfolding: (\ w :: Lib.Shape -> Lib.$w$cshowsPrec2 0 w) -}
+fe37b5d8dcecb6b6ca480134f92432cc
+  $fShowShape2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Rectangle "#) -}
+d86ca113deef1d114f391cf3957d3990
+  $fShowShape3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Circle "#) -}
+19b852a2cfe4350bf557fac3f94585f7
+  $fShowShape4 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 11) -}
+46232a6f3cc42d20daff522fc9d6cf85
+  $fShowShape_$cshow :: Lib.Shape -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x :: Lib.Shape ->
+                 Lib.$fShowShape_$cshowsPrec
+                   GHC.Show.shows18
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+46232a6f3cc42d20daff522fc9d6cf85
+  $fShowShape_$cshowList :: [Lib.Shape] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__ @ Lib.Shape Lib.$fShowShape1) -}
+46232a6f3cc42d20daff522fc9d6cf85
+  $fShowShape_$cshowsPrec ::
+    GHC.Types.Int -> Lib.Shape -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U(U)><S,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: GHC.Types.Int w1 :: Lib.Shape ->
+                 case w of ww { GHC.Types.I# ww1 -> Lib.$w$cshowsPrec2 ww1 w1 }) -}
+33ff6ecfa69072dde4824213080e0b83
+  $w$cshowsPrec ::
+    GHC.Prim.Int# -> Lib.Expr -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 3, Strictness: <L,U><S,1*U><L,U>, Inline: [0] -}
+311ccde704fbfb2baa8f0bbff82a30fc
+  $w$cshowsPrec1 :: Lib.Op -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [0],
+     Unfolding: (\ w :: Lib.Op w1 :: GHC.Base.String ->
+                 case w of wild {
+                   Lib.Add -> GHC.Base.++ @ GHC.Types.Char Lib.$fShowOp4 w1
+                   Lib.Sub -> GHC.Base.++ @ GHC.Types.Char Lib.$fShowOp3 w1
+                   Lib.Mul -> GHC.Base.++ @ GHC.Types.Char Lib.$fShowOp2 w1
+                   Lib.Div -> GHC.Base.++ @ GHC.Types.Char Lib.$fShowOp1 w1 }) -}
+46232a6f3cc42d20daff522fc9d6cf85
+  $w$cshowsPrec2 :: GHC.Prim.Int# -> Lib.Shape -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <L,U><S,1*U>, Inline: [0],
+     Unfolding: (\ ww :: GHC.Prim.Int# w :: Lib.Shape ->
+                 case w of wild {
+                   Lib.Circle b1 b2 b3
+                   -> let {
+                        f :: GHC.Base.String -> GHC.Base.String
+                        = case b1 of ww1 { GHC.Types.F# ww2 ->
+                          GHC.Float.$w$sshowSignedFloat1
+                            GHC.Float.$fShowFloat_$sshowFloat
+                            Lib.$fShowShape4
+                            ww2 }
+                      } in
+                      let {
+                        f1 :: GHC.Base.String -> GHC.Base.String
+                        = case b2 of ww1 { GHC.Types.F# ww2 ->
+                          GHC.Float.$w$sshowSignedFloat1
+                            GHC.Float.$fShowFloat_$sshowFloat
+                            Lib.$fShowShape4
+                            ww2 }
+                      } in
+                      let {
+                        g :: GHC.Base.String -> GHC.Base.String
+                        = case b3 of ww1 { GHC.Types.F# ww2 ->
+                          GHC.Float.$w$sshowSignedFloat1
+                            GHC.Float.$fShowFloat_$sshowFloat
+                            Lib.$fShowShape4
+                            ww2 }
+                      } in
+                      let {
+                        p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,U> -}
+                        = \ x :: GHC.Base.String ->
+                          GHC.Base.++
+                            @ GHC.Types.Char
+                            Lib.$fShowShape3
+                            (f (GHC.Types.:
+                                  @ GHC.Types.Char
+                                  GHC.Show.showSpace1
+                                  (f1 (GHC.Types.: @ GHC.Types.Char GHC.Show.showSpace1 (g x)))))
+                      } in
+                      case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.>=# ww 11) of wild1 {
+                        GHC.Types.False -> p
+                        GHC.Types.True
+                        -> \ x :: GHC.Base.String ->
+                           GHC.Types.:
+                             @ GHC.Types.Char
+                             GHC.Show.shows9
+                             (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows8 x)) }
+                   Lib.Rectangle b1 b2 b3 b4
+                   -> let {
+                        f :: GHC.Base.String -> GHC.Base.String
+                        = case b1 of ww1 { GHC.Types.F# ww2 ->
+                          GHC.Float.$w$sshowSignedFloat1
+                            GHC.Float.$fShowFloat_$sshowFloat
+                            Lib.$fShowShape4
+                            ww2 }
+                      } in
+                      let {
+                        f1 :: GHC.Base.String -> GHC.Base.String
+                        = case b2 of ww1 { GHC.Types.F# ww2 ->
+                          GHC.Float.$w$sshowSignedFloat1
+                            GHC.Float.$fShowFloat_$sshowFloat
+                            Lib.$fShowShape4
+                            ww2 }
+                      } in
+                      let {
+                        f2 :: GHC.Base.String -> GHC.Base.String
+                        = case b3 of ww1 { GHC.Types.F# ww2 ->
+                          GHC.Float.$w$sshowSignedFloat1
+                            GHC.Float.$fShowFloat_$sshowFloat
+                            Lib.$fShowShape4
+                            ww2 }
+                      } in
+                      let {
+                        g :: GHC.Base.String -> GHC.Base.String
+                        = case b4 of ww1 { GHC.Types.F# ww2 ->
+                          GHC.Float.$w$sshowSignedFloat1
+                            GHC.Float.$fShowFloat_$sshowFloat
+                            Lib.$fShowShape4
+                            ww2 }
+                      } in
+                      let {
+                        p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,U> -}
+                        = \ x :: GHC.Base.String ->
+                          GHC.Base.++
+                            @ GHC.Types.Char
+                            Lib.$fShowShape2
+                            (f (GHC.Types.:
+                                  @ GHC.Types.Char
+                                  GHC.Show.showSpace1
+                                  (f1
+                                     (GHC.Types.:
+                                        @ GHC.Types.Char
+                                        GHC.Show.showSpace1
+                                        (f2
+                                           (GHC.Types.:
+                                              @ GHC.Types.Char
+                                              GHC.Show.showSpace1
+                                              (g x)))))))
+                      } in
+                      case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.>=# ww 11) of wild1 {
+                        GHC.Types.False -> p
+                        GHC.Types.True
+                        -> \ x :: GHC.Base.String ->
+                           GHC.Types.:
+                             @ GHC.Types.Char
+                             GHC.Show.shows9
+                             (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows8 x)) } }) -}
+33ff6ecfa69072dde4824213080e0b83
+  data Expr = Val GHC.Types.Int | App Lib.Op Lib.Expr Lib.Expr
+311ccde704fbfb2baa8f0bbff82a30fc
+  data Op = Add | Sub | Mul | Div
+    Promotable
+46232a6f3cc42d20daff522fc9d6cf85
+  data Shape
+    = Circle GHC.Types.Float GHC.Types.Float GHC.Types.Float
+    | Rectangle GHC.Types.Float
+                GHC.Types.Float
+                GHC.Types.Float
+                GHC.Types.Float
+c556cba514931966d7e601a2d7802f89
+  eval :: Lib.Expr -> [GHC.Types.Int]
+  {- Arity: 1, Strictness: <S,1*U> -}
+b06763ec4998f80e9ff0e482052ccc43
+  exprs :: [GHC.Types.Int] -> [Lib.Expr]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+0f310a072044630fdad0af8464edc82f
+  perms :: [a] -> [[a]]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+9c121b6588e39faecccf316cc1984877
+  solutions :: [GHC.Types.Int] -> GHC.Types.Int -> [Lib.Expr]
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: (\ ns :: [GHC.Types.Int] n :: GHC.Types.Int ->
+                 let {
+                   lvl3 :: [GHC.Types.Int]
+                   = GHC.Types.: @ GHC.Types.Int n (GHC.Types.[] @ GHC.Types.Int)
+                 } in
+                 letrec {
+                   go1 :: [[GHC.Types.Int]] -> [Lib.Expr]
+                     {- Arity: 1, Strictness: <S,1*U> -}
+                   = \ ds :: [[GHC.Types.Int]] ->
+                     case ds of wild {
+                       [] -> GHC.Types.[] @ Lib.Expr
+                       : y ys
+                       -> let {
+                            ys1 :: [Lib.Expr] = go1 ys
+                          } in
+                          letrec {
+                            go2 :: [[GHC.Types.Int]] -> [Lib.Expr]
+                              {- Arity: 1, Strictness: <S,1*U> -}
+                            = \ ds1 :: [[GHC.Types.Int]] ->
+                              case ds1 of wild1 {
+                                [] -> ys1
+                                : y1 ys2
+                                -> let {
+                                     ds2 :: [Lib.Expr] = go2 ys2
+                                   } in
+                                   letrec {
+                                     go3 :: [Lib.Expr] -> [Lib.Expr]
+                                       {- Arity: 1, Strictness: <S,1*U> -}
+                                     = \ ds3 :: [Lib.Expr] ->
+                                       case ds3 of wild2 {
+                                         [] -> ds2
+                                         : y2 ys3
+                                         -> case GHC.Classes.$fEq[]_$s$c==
+                                                   (Lib.eval y2)
+                                                   lvl3 of wild3 {
+                                              GHC.Types.False -> go3 ys3
+                                              GHC.Types.True
+                                              -> GHC.Types.: @ Lib.Expr y2 (go3 ys3) } }
+                                   } in
+                                   go3 (Lib.exprs y1) }
+                          } in
+                          go2 (Lib.perms @ GHC.Types.Int y) }
+                 } in
+                 go1 (Lib.subs @ GHC.Types.Int ns)) -}
+fb42f0046832740318ae6fdc2d075d53
+  subs :: [a] -> [[a]]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+instance GHC.Show.Show [Lib.Expr] = Lib.$fShowExpr
+instance GHC.Show.Show [Lib.Op] = Lib.$fShowOp
+instance GHC.Show.Show [Lib.Shape] = Lib.$fShowShape
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

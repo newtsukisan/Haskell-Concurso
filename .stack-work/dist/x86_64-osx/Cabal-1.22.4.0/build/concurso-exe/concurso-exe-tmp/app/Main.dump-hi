@@ -1,17 +1,19 @@
 
 ==================== FINAL INTERFACE ====================
-2015-11-01 13:31:24.464336 UTC
+2015-11-25 10:43:39.379449 UTC
 
 interface main@main:Main 7102
-  interface hash: a9b9924ff4fcc646e07d97323e2501c2
-  ABI hash: 8cab97e5dfb9b832f0249c78f50a70d8
-  export-list hash: ea76aa8a690f9a6e1d073d6f7844d7b9
-  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  interface hash: 847220419db97aaf941d0d6012d8988d
+  ABI hash: 4a406c07ca2fd265181ee727cc9597a1
+  export-list hash: 156086e81e33a1a30f3330263c6d8d13
+  orphan hash: e258ba97247f90a335e8e802ef790ee2
   flag hash: f696ec07f6fb2d1e2d6b664a655d8948
   sig of: Nothing
   used TH splices: False
   where
 exports:
+  Main.getEstado
+  Main.getObjetivo
   Main.main
 module dependencies:
 package dependencies: base-4.8.1.0*
@@ -21,22 +23,149 @@ orphans: base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
 family instance modules: base-4.8.1.0:Control.Applicative
                          base-4.8.1.0:Data.Either base-4.8.1.0:Data.Monoid
                          base-4.8.1.0:Data.Type.Equality base-4.8.1.0:GHC.Generics
+import  -/  base-4.8.1.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.1.0:GHC.List f31ed8784b3e05f1397195751f7d74ea
+import  -/  base-4.8.1.0:GHC.Show b8c65ca3124f92a166c9f05120382442
 import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
-import  -/  concurso-0.1.0.0@concu_9AEwiLQ4KB34fA4pkFzeil:Lib d7fb1c30ab2f8c175a42338a9739d363
+import  -/  base-4.8.1.0:System.Environment 946ddc2d7c48138bb213316abaff2a8d
+import  -/  base-4.8.1.0:System.IO 29a6f3d7c8ad8a4e6200d8bbb6e70aae
+import  -/  base-4.8.1.0:Text.Read 30509137a501bd56d136aca29a7a35a6
+import  -/  concurso-0.1.0.0@concu_9AEwiLQ4KB34fA4pkFzeil:Lib 95e3e74fb3a86bd00832f71708430573
+import  -/  concurso-0.1.0.0@concu_9AEwiLQ4KB34fA4pkFzeil:Propio 6a90eff0adba1284aa5ac09cc05c3ef9
 import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
-c6d11cd0d6f10be83978c5aafda5f846
+db61905c358304b596b0690ed2583f81
+  $s$fShow(,)1 :: GHC.Show.Show [GHC.Types.Int]
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                GHC.Show.$fShow[]_$s$fShow[] -}
+430f7929ebdf078cabb24bd01c1f0608
+  $s$fShow(,)_$s$fShow(,)_$cshowList ::
+    [(Propio.Operacion, [GHC.Types.Int])] -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ eta :: [(Propio.Operacion, [GHC.Types.Int])]
+                   eta1 :: GHC.Base.String ->
+                 GHC.Show.showList__
+                   @ (Propio.Operacion, [GHC.Types.Int])
+                   (GHC.Show.$fShow(,)_$cshowsPrec
+                      @ Propio.Operacion
+                      @ [GHC.Types.Int]
+                      Propio.$fShowOperacion
+                      Main.$s$fShow(,)1
+                      GHC.Show.shows18)
+                   eta
+                   eta1) -}
+dbf83e160de4ade9ed636adf12fa1b1e
+  $sread2 :: GHC.Read.Read [GHC.Types.Int]
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                GHC.Read.$fRead[]_$s$fRead[] -}
+382b42e859794874ad798bbf4d945588
+  getEstado :: GHC.Base.String -> [GHC.Types.Int]
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ s :: GHC.Base.String ->
+                 case Text.Read.readEither
+                        @ [GHC.Types.Int]
+                        Main.$sread2
+                        s of wild {
+                   Data.Either.Left x -> GHC.Err.error @ [GHC.Types.Int] x
+                   Data.Either.Right y -> y }) -}
+2b917a44c8c0cfb42d40a524056b06ad
+  getObjetivo :: GHC.Base.String -> GHC.Types.Int
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ s :: GHC.Base.String ->
+                 case Text.Read.readEither
+                        @ GHC.Types.Int
+                        GHC.Read.$fReadInt
+                        s of wild {
+                   Data.Either.Left x -> GHC.Err.error @ GHC.Types.Int x
+                   Data.Either.Right y -> y }) -}
+0a5772e5a1c0415cff9c6d18066d63bb
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <L,U>,
      Unfolding: InlineRule (0, True, True)
-                Lib.someFunc1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
-e18838fe10449426c1c9f559b94a18fe
+                Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
+ce3d4c304f192b082a818096c0247e42
   main1 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: (\ s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case System.Environment.getArgs1 s of ds1 { (#,#) ipv ipv1 ->
+                 GHC.IO.Handle.Text.hPutStr2
+                   GHC.IO.Handle.FD.stdout
+                   (case Text.Read.readEither6
+                           @ [GHC.Types.Int]
+                           (Text.ParserCombinators.ReadP.run
+                              @ [GHC.Types.Int]
+                              (GHC.Read.$wa
+                                 @ GHC.Types.Int
+                                 GHC.Read.$fReadInt2
+                                   `cast`
+                                 (Sym (Text.ParserCombinators.ReadPrec.NTCo:ReadPrec[0]
+                                           <GHC.Types.Int>_R))
+                                 @ [GHC.Types.Int]
+                                 (Text.Read.readEither5 @ [GHC.Types.Int]))
+                              (GHC.List.$w!! @ GHC.Base.String ipv1 0)) of wild {
+                      []
+                      -> case GHC.Err.error @ [GHC.Types.Int] Text.Read.readEither4
+                         ret_ty GHC.Base.String
+                         of {}
+                      : x ds
+                      -> case ds of wild1 {
+                           []
+                           -> GHC.Show.showList__
+                                @ [(Propio.Operacion, Propio.Estado)]
+                                Main.$s$fShow(,)_$s$fShow(,)_$cshowList
+                                (Propio.solucion
+                                   x
+                                   (case Text.Read.readEither6
+                                           @ GHC.Types.Int
+                                           (Text.ParserCombinators.ReadP.run
+                                              @ GHC.Types.Int
+                                              ((GHC.Read.$fReadInt3
+                                                  GHC.Read.$fReadInt_$sconvertInt
+                                                  Text.ParserCombinators.ReadPrec.minPrec)
+                                                 `cast`
+                                               (Text.ParserCombinators.ReadP.NTCo:ReadP[0]
+                                                    <GHC.Types.Int>_R)
+                                                 @ GHC.Types.Int
+                                                 (Text.Read.readEither5 @ GHC.Types.Int))
+                                              (GHC.List.$w!! @ GHC.Base.String ipv1 1)) of wild2 {
+                                      [] -> GHC.Err.error @ GHC.Types.Int Text.Read.readEither4
+                                      : x1 ds2
+                                      -> case ds2 of wild3 {
+                                           [] -> x1
+                                           : ipv2 ipv3
+                                           -> GHC.Err.error
+                                                @ GHC.Types.Int
+                                                Text.Read.readEither2 } }))
+                                (GHC.Types.[] @ GHC.Types.Char)
+                           : ipv2 ipv3
+                           -> case GHC.Err.error @ [GHC.Types.Int] Text.Read.readEither2
+                              ret_ty GHC.Base.String
+                              of {} } })
+                   GHC.Types.True
+                   ipv }) -}
+3a6d6038af80cea33d7a4b4bc5cde926
+  main2 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1,
      Unfolding: (GHC.TopHandler.runMainIO1
                    @ ()
-                   Lib.someFunc1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R))) -}
+                   Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R))) -}
+"SPEC/Main $fShow(,)_$cshowList @ Operacion @ [Int]" [ALWAYS] forall $dShow :: GHC.Show.Show
+                                                                                 Propio.Operacion
+                                                                     $dShow1 :: GHC.Show.Show
+                                                                                  [GHC.Types.Int]
+  GHC.Show.$fShow(,)_$cshowList @ Propio.Operacion
+                                @ [GHC.Types.Int]
+                                $dShow
+                                $dShow1
+  = Main.$s$fShow(,)_$s$fShow(,)_$cshowList
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:
