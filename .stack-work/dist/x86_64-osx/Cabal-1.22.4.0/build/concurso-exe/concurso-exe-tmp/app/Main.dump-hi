@@ -1,19 +1,18 @@
 
 ==================== FINAL INTERFACE ====================
-2015-11-25 10:43:39.379449 UTC
+2015-11-25 15:57:35.656366 UTC
 
 interface main@main:Main 7102
-  interface hash: 847220419db97aaf941d0d6012d8988d
-  ABI hash: 4a406c07ca2fd265181ee727cc9597a1
-  export-list hash: 156086e81e33a1a30f3330263c6d8d13
+  interface hash: eb0c25b7c97739b371213dfaeec49264
+  ABI hash: e9425a561c039d435673fca089a4e124
+  export-list hash: 5345a3ecc58e442ea93fec5c94638bc3
   orphan hash: e258ba97247f90a335e8e802ef790ee2
   flag hash: f696ec07f6fb2d1e2d6b664a655d8948
   sig of: Nothing
   used TH splices: False
   where
 exports:
-  Main.getEstado
-  Main.getObjetivo
+  Main.ejecutar
   Main.main
 module dependencies:
 package dependencies: base-4.8.1.0*
@@ -24,14 +23,15 @@ family instance modules: base-4.8.1.0:Control.Applicative
                          base-4.8.1.0:Data.Either base-4.8.1.0:Data.Monoid
                          base-4.8.1.0:Data.Type.Equality base-4.8.1.0:GHC.Generics
 import  -/  base-4.8.1.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
-import  -/  base-4.8.1.0:GHC.List f31ed8784b3e05f1397195751f7d74ea
 import  -/  base-4.8.1.0:GHC.Show b8c65ca3124f92a166c9f05120382442
 import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
 import  -/  base-4.8.1.0:System.Environment 946ddc2d7c48138bb213316abaff2a8d
 import  -/  base-4.8.1.0:System.IO 29a6f3d7c8ad8a4e6200d8bbb6e70aae
 import  -/  base-4.8.1.0:Text.Read 30509137a501bd56d136aca29a7a35a6
+import  -/  concurso-0.1.0.0@concu_9AEwiLQ4KB34fA4pkFzeil:Countdown ee5515eb271e96a23f208a54a6499b9f
 import  -/  concurso-0.1.0.0@concu_9AEwiLQ4KB34fA4pkFzeil:Lib 95e3e74fb3a86bd00832f71708430573
-import  -/  concurso-0.1.0.0@concu_9AEwiLQ4KB34fA4pkFzeil:Propio 6a90eff0adba1284aa5ac09cc05c3ef9
+import  -/  concurso-0.1.0.0@concu_9AEwiLQ4KB34fA4pkFzeil:Propio 00ad68b97b4ea50438187fdf015a2621
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
 import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
 db61905c358304b596b0690ed2583f81
   $s$fShow(,)1 :: GHC.Show.Show [GHC.Types.Int]
@@ -55,101 +55,167 @@ db61905c358304b596b0690ed2583f81
                       GHC.Show.shows18)
                    eta
                    eta1) -}
-dbf83e160de4ade9ed636adf12fa1b1e
-  $sread2 :: GHC.Read.Read [GHC.Types.Int]
-  {- Strictness: m,
-     Unfolding: InlineRule (0, True, True)
-                GHC.Read.$fRead[]_$s$fRead[] -}
-382b42e859794874ad798bbf4d945588
-  getEstado :: GHC.Base.String -> [GHC.Types.Int]
-  {- Arity: 1, Strictness: <L,U>,
-     Unfolding: InlineRule (1, True, False)
-                (\ s :: GHC.Base.String ->
-                 case Text.Read.readEither
-                        @ [GHC.Types.Int]
-                        Main.$sread2
-                        s of wild {
-                   Data.Either.Left x -> GHC.Err.error @ [GHC.Types.Int] x
-                   Data.Either.Right y -> y }) -}
-2b917a44c8c0cfb42d40a524056b06ad
-  getObjetivo :: GHC.Base.String -> GHC.Types.Int
-  {- Arity: 1, Strictness: <L,U>,
-     Unfolding: InlineRule (1, True, False)
-                (\ s :: GHC.Base.String ->
-                 case Text.Read.readEither
-                        @ GHC.Types.Int
-                        GHC.Read.$fReadInt
-                        s of wild {
-                   Data.Either.Left x -> GHC.Err.error @ GHC.Types.Int x
-                   Data.Either.Right y -> y }) -}
-0a5772e5a1c0415cff9c6d18066d63bb
+e43b569ccfc0d7c1ecf78017fba104ad
+  ejecutar :: [GHC.Base.String] -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ ds :: [GHC.Base.String] ->
+                 case ds of wild {
+                   [] -> Main.ejecutar11
+                   : x0 ds1
+                   -> case ds1 of wild1 {
+                        [] -> Main.ejecutar11
+                        : x1 ds2
+                        -> case ds2 of wild2 {
+                             [] -> Main.ejecutar11
+                             : x2 ds3
+                             -> case ds3 of wild3 {
+                                  []
+                                  -> case GHC.Base.eqString x2 Main.ejecutar10 of wild4 {
+                                       GHC.Types.False
+                                       -> case GHC.Base.eqString x2 Main.ejecutar9 of wild5 {
+                                            GHC.Types.False
+                                            -> case GHC.Base.eqString x2 Main.ejecutar8 of wild6 {
+                                                 GHC.Types.False -> Main.ejecutar7
+                                                 GHC.Types.True
+                                                 -> Main.ejecutar_$ssub_ejecuta
+                                                      Countdown.solutions''
+                                                      x0
+                                                      x1 }
+                                            GHC.Types.True
+                                            -> Main.ejecutar_$ssub_ejecuta
+                                                 Countdown.solutions'
+                                                 x0
+                                                 x1 }
+                                       GHC.Types.True
+                                       -> case Text.Read.readEither6
+                                                 @ [GHC.Types.Int]
+                                                 (Text.ParserCombinators.ReadP.run
+                                                    @ [GHC.Types.Int]
+                                                    Main.ejecutar6
+                                                    x0) of wild5 {
+                                            [] -> case Main.ejecutar5 ret_ty GHC.Base.String of {}
+                                            : x ds4
+                                            -> case ds4 of wild6 {
+                                                 []
+                                                 -> GHC.Show.showList__
+                                                      @ [(Propio.Operacion, Propio.Estado)]
+                                                      Main.$s$fShow(,)_$s$fShow(,)_$cshowList
+                                                      (Propio.solucion
+                                                         x
+                                                         (case Text.Read.readEither6
+                                                                 @ GHC.Types.Int
+                                                                 (Text.ParserCombinators.ReadP.run
+                                                                    @ GHC.Types.Int
+                                                                    Main.ejecutar4
+                                                                    x1) of wild7 {
+                                                            [] -> Main.ejecutar3
+                                                            : x4 ds5
+                                                            -> case ds5 of wild8 {
+                                                                 [] -> x4
+                                                                 : ipv ipv1 -> Main.ejecutar2 } }))
+                                                      (GHC.Types.[] @ GHC.Types.Char)
+                                                 : ipv ipv1
+                                                 -> case Main.ejecutar1
+                                                    ret_ty GHC.Base.String
+                                                    of {} } } }
+                                  : ipv ipv1 -> Main.ejecutar11 } } } }) -}
+ceeca87f27a11f87bc881dfbfcda8546
+  ejecutar1 :: [GHC.Types.Int]
+  {- Strictness: b -}
+bd5db79f867923de6c5f7ee995935e7f
+  ejecutar10 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "1"#) -}
+057b5cdc42da4d78c96ed485b25f5b39
+  ejecutar11 :: GHC.Base.String
+  {- Strictness: b -}
+ea1fe22f128b5f379f8136d873940fde
+  ejecutar2 :: GHC.Types.Int
+  {- Strictness: b -}
+5d04f0a2e5518675b320159fd1c9966d
+  ejecutar3 :: GHC.Types.Int
+  {- Strictness: b -}
+537e51afa10d88c4d562917db5b48657
+  ejecutar4 :: Text.ParserCombinators.ReadP.P GHC.Types.Int
+  {- Unfolding: ((GHC.Read.$fReadInt3
+                    GHC.Read.$fReadInt_$sconvertInt
+                    Text.ParserCombinators.ReadPrec.minPrec)
+                   `cast`
+                 (Text.ParserCombinators.ReadP.NTCo:ReadP[0] <GHC.Types.Int>_R)
+                   @ GHC.Types.Int
+                   (Text.Read.readEither5 @ GHC.Types.Int)) -}
+3f158fe69141a023db93ad39c79555e6
+  ejecutar5 :: [GHC.Types.Int]
+  {- Strictness: b -}
+44d02a5eeccea2d5b8b6cfb904271543
+  ejecutar6 :: Text.ParserCombinators.ReadP.P [GHC.Types.Int]
+  {- Unfolding: (GHC.Read.$wa
+                   @ GHC.Types.Int
+                   GHC.Read.$fReadInt2
+                     `cast`
+                   (Sym (Text.ParserCombinators.ReadPrec.NTCo:ReadPrec[0]
+                             <GHC.Types.Int>_R))
+                   @ [GHC.Types.Int]
+                   (Text.Read.readEither5 @ [GHC.Types.Int])) -}
+947e9a48b88c09821e812552b7e483b6
+  ejecutar7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCStringUtf8#
+                   "No se ha seleccionado uno de los dos  m\\195\\169todos disponibles"#) -}
+b5414517c635ff5a7e9b16bce0ecd032
+  ejecutar8 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "3"#) -}
+e08e9af556ae981ce09849635a2a9cf2
+  ejecutar9 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "2"#) -}
+c3f4ba1d376a0c6aa0c0e25c0a9a4c77
+  ejecutar_$ssub_ejecuta ::
+    ([GHC.Types.Int] -> GHC.Types.Int -> [Countdown.Expr])
+    -> GHC.Base.String -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 3, Strictness: <C(C(S)),1*C1(C1(U))><L,U><L,U>,
+     Unfolding: (\ f :: [GHC.Types.Int]
+                        -> GHC.Types.Int -> [Countdown.Expr]
+                   arg0 :: GHC.Base.String
+                   arg1 :: GHC.Base.String ->
+                 GHC.Show.showList__
+                   @ Countdown.Expr
+                   Countdown.$fShowExpr1
+                   (f (case Text.Read.readEither6
+                              @ [GHC.Types.Int]
+                              (Text.ParserCombinators.ReadP.run
+                                 @ [GHC.Types.Int]
+                                 Main.ejecutar6
+                                 arg0) of wild {
+                         [] -> Main.ejecutar5
+                         : x ds
+                         -> case ds of wild1 { [] -> x : ipv ipv1 -> Main.ejecutar1 } })
+                      (case Text.Read.readEither6
+                              @ GHC.Types.Int
+                              (Text.ParserCombinators.ReadP.run
+                                 @ GHC.Types.Int
+                                 Main.ejecutar4
+                                 arg1) of wild {
+                         [] -> Main.ejecutar3
+                         : x ds
+                         -> case ds of wild1 { [] -> x : ipv ipv1 -> Main.ejecutar2 } }))
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+b50fbe4bd487c2e9c725dfd3e6e91b80
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <L,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
-ce3d4c304f192b082a818096c0247e42
+50a5d485ab435554927acac7b350bb17
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1, Strictness: <L,U>,
-     Unfolding: (\ s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+     Unfolding: InlineRule (1, True, False)
+                (\ s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
                  case System.Environment.getArgs1 s of ds1 { (#,#) ipv ipv1 ->
                  GHC.IO.Handle.Text.hPutStr2
                    GHC.IO.Handle.FD.stdout
-                   (case Text.Read.readEither6
-                           @ [GHC.Types.Int]
-                           (Text.ParserCombinators.ReadP.run
-                              @ [GHC.Types.Int]
-                              (GHC.Read.$wa
-                                 @ GHC.Types.Int
-                                 GHC.Read.$fReadInt2
-                                   `cast`
-                                 (Sym (Text.ParserCombinators.ReadPrec.NTCo:ReadPrec[0]
-                                           <GHC.Types.Int>_R))
-                                 @ [GHC.Types.Int]
-                                 (Text.Read.readEither5 @ [GHC.Types.Int]))
-                              (GHC.List.$w!! @ GHC.Base.String ipv1 0)) of wild {
-                      []
-                      -> case GHC.Err.error @ [GHC.Types.Int] Text.Read.readEither4
-                         ret_ty GHC.Base.String
-                         of {}
-                      : x ds
-                      -> case ds of wild1 {
-                           []
-                           -> GHC.Show.showList__
-                                @ [(Propio.Operacion, Propio.Estado)]
-                                Main.$s$fShow(,)_$s$fShow(,)_$cshowList
-                                (Propio.solucion
-                                   x
-                                   (case Text.Read.readEither6
-                                           @ GHC.Types.Int
-                                           (Text.ParserCombinators.ReadP.run
-                                              @ GHC.Types.Int
-                                              ((GHC.Read.$fReadInt3
-                                                  GHC.Read.$fReadInt_$sconvertInt
-                                                  Text.ParserCombinators.ReadPrec.minPrec)
-                                                 `cast`
-                                               (Text.ParserCombinators.ReadP.NTCo:ReadP[0]
-                                                    <GHC.Types.Int>_R)
-                                                 @ GHC.Types.Int
-                                                 (Text.Read.readEither5 @ GHC.Types.Int))
-                                              (GHC.List.$w!! @ GHC.Base.String ipv1 1)) of wild2 {
-                                      [] -> GHC.Err.error @ GHC.Types.Int Text.Read.readEither4
-                                      : x1 ds2
-                                      -> case ds2 of wild3 {
-                                           [] -> x1
-                                           : ipv2 ipv3
-                                           -> GHC.Err.error
-                                                @ GHC.Types.Int
-                                                Text.Read.readEither2 } }))
-                                (GHC.Types.[] @ GHC.Types.Char)
-                           : ipv2 ipv3
-                           -> case GHC.Err.error @ [GHC.Types.Int] Text.Read.readEither2
-                              ret_ty GHC.Base.String
-                              of {} } })
+                   (Main.ejecutar ipv1)
                    GHC.Types.True
                    ipv }) -}
-3a6d6038af80cea33d7a4b4bc5cde926
+d0e89c8205d59ee49b5c6732869611b6
   main2 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
